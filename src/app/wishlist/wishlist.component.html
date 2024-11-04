@@ -1,0 +1,35 @@
+<div>
+
+    <div *ngIf="allWishlistItems.length === 0"  class="d-flex justify-content-center align-items-center flex-column">
+        <img src="https://www.pragati-trafficsafety.com/assets/front/images/wishlist-empty.jpg"  class="mt-5" height="500" alt="">
+        <button class="btn btn-outline-primary fw-bold border-3" routerLink="/">ADD NEW ITEMS</button>
+    </div>
+    
+    <div class="row gx-4 gx-lg-5 w-100 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center mt-5">
+    <div class="col mb-5 " >
+        <div class="card h-100">
+          <!-- Product image -->
+             <a href="" routerLink="user/viewProduct"  class="p-5 image" style=" height:250px">
+            <img class="card-img-top" height="150px" src=""alt="..."   />
+
+             </a>
+            <!-- Product details-->
+          <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name--> 
+                    <h5 class="fw-bolder">..</h5> 
+                    <!-- Product price-->
+                    ₹ 
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-between">
+               <button class="btn btn-outline-danger border-light mt-auto" ><i class="fa-solid fa-trash"></i></button>
+                <a href=""><button class="btn btn-outline-success border-light mt-auto"  ><i class="fa-solid fa-cart-shopping"></i></button></a>
+
+
+            </div>
+        </div>
+        </div>
+    </div> 
+</div>  

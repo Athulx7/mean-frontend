@@ -1,0 +1,53 @@
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://img.freepik.com/free-psd/shopping-day-template-design_23-2150803941.jpg?semt=ais_hybrid" height="500px" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.freepik.com/free-psd/boxing-day-landing-page-template_23-2149845255.jpg?semt=ais_hybrid" height="500px" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.freepik.com/free-vector/flat-holi-festival-celebration-horizontal-sale-banner-template_23-2150035682.jpg" height="500px" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let products of allproducts " >
+                <div class="card h-100">
+                    <!-- Product image-->
+                     <a href="" routerLink="user/viewProduct/{{products.id}}"  class="p-5 image" style=" height:250px">
+                    <img class="card-img-top" height="150px" src={{products.image}} alt="..."   />
+
+                     </a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{products.title.substring(0,18)}}..</h5>
+                            <!-- Product price-->
+                            ₹ {{products.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-between">
+                       <button class="btn btn-outline-danger border-light mt-auto" (click)="addToWishList(products)" ><i class="fa-solid fa-heart"></i></button>
+                        <a href=""><button class="btn btn-outline-success border-light mt-auto" (click)="addToCart(products)" ><i class="fa-solid fa-cart-shopping"></i></button></a>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
