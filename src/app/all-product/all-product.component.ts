@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Services/service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-product',
@@ -25,6 +26,29 @@ export class AllProductComponent implements OnInit{
 
   addToWishList(product:any){
    console.log(product)
+   if(sessionStorage.getItem('token')){
+    this.apiService.addToWishListAPI(product).subscribe({
+      next:(res:any)=>{
+        console.log(res)
+      },
+      error:(res:any)=>{
+        console.log(res)
+      }
+     })
+
+   }
+
+   else{
+    Swal.fire({
+      title: 'Please Login !',
+      text: 'Please login',
+      icon: 'warning',
+      confirmButtonText: 'OK'
+    })
+
+   }
+   
+  
   }
 
   addToCart(product:any){

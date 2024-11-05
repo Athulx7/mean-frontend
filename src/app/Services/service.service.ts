@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,19 @@ export class ServiceService {
    }
    
     serverUrl = 'http://localhost:4000'
+
+       //common function for create custome header
+
+       addTokenToHeader(){
+        //1)create an objext of class httpheaders 
+        let headers = new HttpHeaders();
+        const token = sessionStorage.getItem('token')
+        if(token){
+          headers.append('Authorization',`Bearer ${token}`)
+        }
+        return {headers}
+      }
+  
 
     getAllProducts(){
       return this.httpClient.get(`${this.serverUrl}/user/getallproducts`)
@@ -33,4 +46,10 @@ export class ServiceService {
       return this.httpClient.post(`${this.serverUrl}/userLogin`,userlogin)
     }
     
+ 
+    // adding to wishlist 
+
+    addToWishListAPI(data:any){
+      return this.httpClient.post(`${this.serverUrl}/user/addTowish`,data,this.addTokenToHeader())
+    }
 }
