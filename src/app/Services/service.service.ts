@@ -19,7 +19,7 @@ export class ServiceService {
         let headers = new HttpHeaders();
         const token = sessionStorage.getItem('token')
         if(token){
-          headers.append('Authorization',`Bearer ${token}`)
+           headers = headers.append('Authorization',`Bearer ${token}`)
         }
         return {headers}
       }
@@ -51,5 +51,12 @@ export class ServiceService {
 
     addToWishListAPI(data:any){
       return this.httpClient.post(`${this.serverUrl}/user/addTowish`,data,this.addTokenToHeader())
+    }
+
+
+    //get all wishlist items
+
+    getAllwishListItemAPI(){
+      return this.httpClient.get(`${this.serverUrl}/user/getAllwishItems`,this.addTokenToHeader())
     }
 }
