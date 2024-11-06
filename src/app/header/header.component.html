@@ -8,12 +8,10 @@
         <div class="ms-auto">
 
             <div class="d-flex ">
-                <a href=""  routerLink="user/wishlist" class="btn btn-danger fw-bold"><i class="fa-solid fa-heart fa-beat-fade me-2"></i>WISHLIST <span class="badge text-bg-light text-danger">0</span></a>
-                <a href="" routerLink="user/cart" class="btn btn-success ms-3 fw-bold"><i class="fa-solid fa-cart-shopping fa-beat-fade me-2"></i>CART<span class="badge text-bg-light text-success ms-2">0</span></a>
-                
+                <a href=""  routerLink="user/wishlist" class="btn btn-danger fw-bold"><i class="fa-solid fa-heart fa-beat-fade me-2"></i>WISHLIST <span class="badge text-bg-light text-danger">{{wishlistCounting}}</span></a>
+                <a href="" routerLink="user/cart" class="btn btn-success ms-3 fw-bold"><i class="fa-solid fa-cart-shopping fa-beat-fade me-2"></i>CART<span class="badge text-bg-light text-success ms-2">0</span></a>               
                 <a href="" *ngIf="!loginUser"  routerLink="user/login" class="btn btn-primary ms-3"><i class="fa-solid fa-user "></i></a>
                 <a href="" *ngIf="loginUser" (click)="handleLogout()"  class="btn btn-danger ms-3"><i class="fa-solid fa-power-off"></i></a>
-
             </div>
         </div>
         

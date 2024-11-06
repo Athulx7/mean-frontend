@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,8 @@ export class ServiceService {
         }
         return {headers}
       }
+
+
   
 
     getAllProducts(){
@@ -58,5 +61,33 @@ export class ServiceService {
 
     getAllwishListItemAPI(){
       return this.httpClient.get(`${this.serverUrl}/user/getAllwishItems`,this.addTokenToHeader())
+    }
+
+
+    
+      //create behavoiur services // for share data betweeen component
+      wishlistCount = new BehaviorSubject(0)
+
+      getWishListCount(){
+        this.getAllwishListItemAPI().subscribe((res:any)=>{
+          this.wishlistCount.next(res.length)
+        })       
+      }
+
+
+    //deleting wishlist items
+
+    delteWisListItemAPI(id:any){
+      return this.httpClient.delete(`${this.serverUrl}/user/deleteWishlist/${id}`,this.addTokenToHeader())
+    }
+
+
+
+
+    //add to cart items
+
+
+    addtoCartItemsAPI(data:any){
+      return this.httpClient.post(`${this.serverUrl}/user/addtoCart`,data,this.addTokenToHeader())
     }
 }

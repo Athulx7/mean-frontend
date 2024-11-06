@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../Services/service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wishlist',
@@ -12,12 +13,13 @@ export class WishlistComponent implements OnInit {
   ngOnInit(): void {
     this.getAllwishListItems()
     
+    
   }
 
   getAllwishListItems(){
     this.apiService.getAllwishListItemAPI().subscribe({
       next:(res:any)=>{
-        console.log(res)
+        // console.log(res)
         this.allWishlistItems = res
 
       },
@@ -26,5 +28,28 @@ export class WishlistComponent implements OnInit {
       }
     })
 
+  }
+
+
+
+  delteWishLIstItem(id:any){
+    this.apiService.delteWisListItemAPI(id).subscribe({
+      next:(res:any)=>{
+        // console.log("deeted")
+        // console.log(res)
+        this.getAllwishListItems()
+        this.apiService.getWishListCount()
+      },
+      error:(res:any)=>{
+        // console.log("error")
+        // console.log(res)
+        Swal.fire({
+          title: 'Error !',
+          text: 'Something went Wrong',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      }
+    })
   }
 }
