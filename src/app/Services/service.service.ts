@@ -90,4 +90,21 @@ export class ServiceService {
     addtoCartItemsAPI(data:any){
       return this.httpClient.post(`${this.serverUrl}/user/addtoCart`,data,this.addTokenToHeader())
     }
+
+
+    getALlCArtItemsAPI(){
+      return this.httpClient.get(`${this.serverUrl}/users/getallCartitem`,this.addTokenToHeader())
+    }
+
+
+    cartCount = new BehaviorSubject(0)
+
+    getCartListCount(){
+      this.getALlCArtItemsAPI().subscribe((res:any)=>{
+        this.cartCount.next(res.length)
+      })
+
+      
+
+    }
 }

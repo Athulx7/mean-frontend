@@ -10,15 +10,21 @@ import { ServiceService } from '../Services/service.service';
 export class HeaderComponent implements OnInit {
   constructor(private router:Router, private apiservice:ServiceService){}
   wishlistCounting=0
+  cartingCount = 0
   loginUser:any = ""
   ngOnInit(): void {
 
     if(sessionStorage.getItem('username')){
       this.apiservice.getWishListCount()
+      this.apiservice.getCartListCount()
       this.loginUser = sessionStorage.getItem('username')
       this.apiservice.wishlistCount.subscribe((res:any)=>{
         this.wishlistCounting = res
       })
+      this.apiservice.cartCount.subscribe((res:any)=>{
+        this.cartingCount=res
+      })
+
     }
     else{
       this.loginUser == ""

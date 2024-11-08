@@ -59,8 +59,6 @@ export class AllProductComponent implements OnInit {
             })
 
           }
-
-
         }
       })
 
@@ -80,16 +78,43 @@ export class AllProductComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    console.log(product)
+    Object.assign(product,{quantity:1})
+    // console.log(product)
     if(sessionStorage.getItem('token')){
       this.apiService.addtoCartItemsAPI(product).subscribe({
         next:(res:any)=>{
+          console.log("insied next")
           console.log(res)
+          Swal.fire({
+            title: 'product Added !',
+            text: 'product Added to Cart',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
+          this.apiService.getCartListCount()
+         
+        
         },
         error:(res:any)=>{
+          console.log("error")
           console.log(res)
+          Swal.fire({
+            title: 'something went wrong  !',
+            text: 'somwthing went wrong',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+          })
         }
       })
+    }
+    else{
+      Swal.fire({
+        title: 'Please Login !',
+        text: 'Please login',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      })
+
     }
   }
 

@@ -29,8 +29,8 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-between">
-                            <a href=""><button class="btn btn-outline-success border-light mt-auto"><i
-                                        class="fa-solid fa-cart-shopping"></i></button></a>
+                            <button class="btn btn-outline-success border-light mt-auto" (click)="addItemTOCart(products,products._id)"><i
+                                        class="fa-solid fa-cart-shopping"></i></button>
                             <button class="btn btn-outline-danger border-light mt-auto"
                                 (click)="delteWishLIstItem(products._id)"><i class="fa-solid fa-trash"></i></button>
                         </div>

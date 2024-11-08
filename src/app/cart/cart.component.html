@@ -12,7 +12,7 @@
         <div class="row w-100">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                <table class="table shadow mt-4 border rounded">
+                <table class="table shadow mt-4 border rounded" *ngFor="let products of allCartItems">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -26,8 +26,8 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Polo T shirt</td>
-                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD_1aqJQL943ziRl4-FMARppkL8pImcFmYlQ&s"
+                            <td>{{products.title.substring(0,20)}}</td>
+                            <td><img src={{products.image}}
                                     height="75" alt=""></td>
                             <td>
                                 <div class="d-flex">
@@ -37,7 +37,7 @@
                                     <button class="btn fw-bolder fs-4">+</button>
                                 </div>
                             </td>
-                            <td>Price</td>
+                            <td>{{products.price}}</td>
                             <td>
                                 <button class="btn"><i class="fa-solid fa-trash"></i></button>
                             </td>
