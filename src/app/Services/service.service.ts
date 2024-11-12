@@ -103,8 +103,22 @@ export class ServiceService {
       this.getALlCArtItemsAPI().subscribe((res:any)=>{
         this.cartCount.next(res.length)
       })
+    }
 
-      
 
+    incrementProductAPI(id:any){
+      return this.httpClient.get(`${this.serverUrl}/user/increPorduct/${id}`,this.addTokenToHeader())
+    }
+
+    decrementProductAPI(id:any){
+      return this.httpClient.get(`${this.serverUrl}/user/decrement/${id}`,this.addTokenToHeader())
+    }
+
+    empatyCartApi(){
+      return this.httpClient.delete(`${this.serverUrl}/user/emptycart`,this.addTokenToHeader())
+    }
+
+    removeitemfromCartAPI(id:any){
+      return this.httpClient.delete(`${this.serverUrl}/user/remvoeitemcart/${id}`,this.addTokenToHeader())
     }
 }

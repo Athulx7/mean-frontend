@@ -7,12 +7,12 @@
         <button class="btn btn-outline-primary mt-4" routerLink=""><span style="font-weight: 700;">Add new
                 Items</span></button>
     </div>
-    <div class="container-fluid p-3 mt-5">
+    <div class="container-fluid p-3 mt-5" *ngIf="allCartItems.length>0">
         <h4 class="text-center text-primary fw-bold  fs-2">CART SUMMARY</h4>
         <div class="row w-100">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                <table class="table shadow mt-4 border rounded" *ngFor="let products of allCartItems">
+                <table class="table shadow mt-4 border rounded" *ngFor="let products of allCartItems; let i=index">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -25,34 +25,34 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td>{{i+1}}</td>
                             <td>{{products.title.substring(0,20)}}</td>
                             <td><img src={{products.image}}
                                     height="75" alt=""></td>
                             <td>
                                 <div class="d-flex">
-                                    <button class="btn fw-bolder fs-4">-</button>
-                                    <input type="number" class="form-control text-center" style="max-width: 3rem;"
+                                    <button class="btn fw-bolder fs-4"(click)="decrementProduct(products._id)">-</button>
+                                    <input type="number" class="form-control text-center" value="{{products.quantity}}" style="max-width: 3rem;"
                                         name="" id="">
-                                    <button class="btn fw-bolder fs-4">+</button>
+                                    <button class="btn fw-bolder fs-4" (click)="incremnetProduct(products._id)">+</button>
                                 </div>
                             </td>
                             <td>{{products.price}}</td>
                             <td>
-                                <button class="btn"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" (click)="removeItemfromcart(products._id)"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-outline-danger fw-bold">EMPTY CART</button>
+                    <button class="btn btn-outline-danger fw-bold" (click)="emptyCart()">EMPTY CART</button>
                     <button class="btn btn-outline-primary ms-3 fw-bold" routerLink="">ADD MORE</button>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="border shadow rounded p-4 mt-4">
-                    <h3 class="fw-bold">GRAND TOTAL: <span class="text-danger">1000</span></h3>
-                    <button class="btn btn-outline-success fw-bold border-2 ">CHECKOUT </button>
+                    <h3 class="fw-bold">GRAND TOTAL: <span class="text-danger">{{totalPrice}}</span></h3>
+                    <button class="btn btn-outline-success fw-bold border-2 " routerLink="/user/checkout" (click)="handlecheckout()">CHECKOUT </button>
                 </div>
             </div>
             <div class="col-md-1"></div>

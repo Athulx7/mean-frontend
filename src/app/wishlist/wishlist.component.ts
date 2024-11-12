@@ -61,7 +61,7 @@ export class WishlistComponent implements OnInit {
         console.log(res)
         Swal.fire({
           title: 'product Added !',
-          text: 'product Added to wishlist',
+          text: 'product Added to Cart',
           icon: 'success',
           confirmButtonText: 'OK'
         })

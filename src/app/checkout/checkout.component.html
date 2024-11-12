@@ -1,2 +1,28 @@
 <app-header></app-header>
-<p>checkout works!</p>
+
+<div class="container-fluid d-flex justify-content-center align-items-center mt-5 flex-column">
+    <h3 class="text-danger">Delivery Items</h3>
+
+    <div class="row w-100">
+        <div class="col-md-6 d-flex justify-content-center">
+            <img src="https://www.shutterstock.com/image-vector/food-delivery-man-riding-red-600nw-1327144634.jpg" alt="">
+        </div>
+        <div class="col-md-5">
+            <h5 class="text-center text-primary fw-bold">Delivery Form</h5>
+            <form action="" [formGroup]="checkOutForm" class="rounded shadow p-5 mt-5">
+                <input type="text" placeholder="please enter your name" class="form-control mt-3" name="" id="">
+                <input type="text" placeholder="House/Flat name" class="form-control mt-2" name="" id="">
+                <input type="text" placeholder="Place" class="form-control mt-2" name="" id="">
+                <input type="text" placeholder="landmark" class="form-control mt-2" name="" id="">
+                <div class="mt-3 d-flex justify-content-between">
+                    <button class="btn btn-danger w-50 fw-bold">Cancel</button>
+                    <button class="btn btn-success w-50 ms-5 fw-bold">Proceed to pay</button>
+
+                </div>
+              
+            </form>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
